@@ -1,0 +1,23 @@
+// src/routes/root.js
+
+import express from "express"
+import { sendError } from "../utils/sendError.js"
+
+const router = express.Router()
+
+router.get("/", (req, res, next) => {
+  try {
+    console.log("GET /root")
+    let response = "<h1>Express Running</h1>"
+    console.log(response)
+
+    res.status(200).json({
+      ok: true,
+      data: movies
+    })
+  } catch (err) {
+    next(sendError(500, "Failed to read data", "READ_ERROR"))
+  }
+})
+
+export default router

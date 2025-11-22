@@ -1,0 +1,25 @@
+{
+  "name": "lv4-api-server-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@vitest/coverage-v8": "^4.0.12",
+    "nodemon": "^3.1.11",
+    "supertest": "^7.1.4",
+    "vitest": "^3.2.4"
+  }
+}
