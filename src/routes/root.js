@@ -11,10 +11,7 @@ router.get("/", (req, res, next) => {
     let response = "<h1>Express Running</h1>"
     console.log(response)
 
-    res.status(200).json({
-      ok: true,
-      data: movies
-    })
+    res.status(200).send(response)
   } catch (err) {
     next(sendError(500, "Failed to read data", "READ_ERROR"))
   }

@@ -13,7 +13,6 @@ describe("Server root route", () => {
   it("serves HTML from root route", async () => {
     const res = await request(route).get("/")
 
-    console.log(res)
     expect(res.status).toBe(200)
     expect(res.text).toContain("<h1>Express Running</h1>")
     expect(res.headers["content-type"]).toMatch(/html/)
