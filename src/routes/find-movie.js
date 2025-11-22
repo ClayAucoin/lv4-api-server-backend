@@ -8,10 +8,13 @@ import { validateId } from "../middleware/validators.js"
 const router = express.Router()
 router.use(express.json());
 
-router.get("/", (req, res) => {
+router.get("/", (req, res, next) => {
   try {
     console.log("GET /find-movie")
-    res.status(200).json(data)
+    res.status(200).json({
+      ok: true,
+      data: data
+    })
   } catch (err) {
     next(sendError(500, "Failed to read data", "READ_ERROR"))
   }

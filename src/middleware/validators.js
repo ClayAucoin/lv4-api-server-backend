@@ -3,8 +3,23 @@
 import { sendError } from "../utils/sendError.js";
 
 export function validateId(req, res, next) {
-  const rawId = req.params.id
-  if (isNaN(id) || id <= 0) { return next(sendError(400, "Invalid id")) }
+  const rawid = req.params.id
+  const id = Number(rawid)
+
+  // not an integer
+  if (!Number.isInteger(id) || isNaN(id)) {
+    return next(
+      sendError(400, `"id" must be an integer`, "INVALID_ID", { value: rawId })
+    )
+  }
+
+  // no negative or zero ids
+  if (id <= 0) {
+    return next(
+      sendError(400, `"id" must be greater than 0`, "INVALID_ID", { value: id })
+    )
+  }
+
   next();
 }
 

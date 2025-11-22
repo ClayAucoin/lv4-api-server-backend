@@ -14,12 +14,13 @@
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.0.12",
     "nodemon": "^3.1.11",
     "supertest": "^7.1.4",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.12"
   }
 }
