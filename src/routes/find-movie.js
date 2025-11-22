@@ -11,10 +11,7 @@ router.use(express.json());
 router.get("/", (req, res) => {
   try {
     console.log("GET /find-movie")
-    res.status(200).json({
-      ok: true,
-      data: data
-    })
+    res.status(200).json(data)
   } catch (err) {
     next(sendError(500, "Failed to read data", "READ_ERROR"))
   }
@@ -30,7 +27,7 @@ router.get("/:id", validateId, (req, res, next) => {
       return next(sendError(404, "Movie not found", "NOT_FOUND"))
     }
 
-    res.status(201).json({
+    res.status(200).json({
       ok: true,
       data: movie
     })

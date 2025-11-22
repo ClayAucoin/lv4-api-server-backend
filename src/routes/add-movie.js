@@ -12,11 +12,7 @@ router.use(express.urlencoded({ extended: true }))
 router.get("/", (req, res, next) => {
   try {
     console.log("GET /add-movie")
-    res.status(200).json({
-      ok: true,
-      message: "Nothing added",
-      data: data
-    })
+    res.status(200).json(data)
   } catch (err) {
     next(sendError(500, "Failed to read data", "READ_ERROR"))
   }
