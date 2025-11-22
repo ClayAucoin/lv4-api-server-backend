@@ -24,10 +24,12 @@ describe("Server Routes", () => {
         "genres": ["Action", "Adventure", "Thriller"]
       })
 
-    console.log(res.status, res.body, res.text)
 
-    expect(res.status).toBe(201)
-    expect(res.body).toMatchObject({
+    const { ok, data } = res.body
+
+    expect(res.status).toBe(200)
+    expect(ok).toBe(true)
+    expect(data).toMatchObject({
       "id": 13,
       "imdb_id": "tt9603208",
       "title": "Mission: Impossible - The Final Reckoning",
@@ -37,7 +39,7 @@ describe("Server Routes", () => {
       "poster": "https://image.tmdb.org/t/p/original/z53D72EAOxGRqdr7KXXWp9dJiDe.jpg",
       "genres": ["Action", "Adventure", "Thriller"]
     })
-    expect(res.body.id).toBeDefined()
+    expect(data.id).toBeDefined()
   });
 })
 

@@ -12,19 +12,22 @@ router.use(express.urlencoded({ extended: true }))
 router.get("/", (req, res, next) => {
   try {
     console.log("GET /add-movie")
-    res.status(200).json(data)
+    res.status(200).json({
+      ok: true,
+      data: data
+    })
   } catch (err) {
     next(sendError(500, "Failed to read data", "READ_ERROR"))
   }
 })
 
-router.post("/", validateId, validateMovieBody, (req, res, next) => {
+router.post("/", validateMovieBody, (req, res, next) => {
   try {
     console.log("POST /add-movie", req.body)
     const newMovie = req.body
     data.push(newMovie)
 
-    res.status(201).json({
+    res.status(200).json({
       ok: true,
       message: "Movie added successfuly",
       data: newMovie

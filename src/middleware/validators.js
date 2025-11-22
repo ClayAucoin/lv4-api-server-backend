@@ -3,20 +3,22 @@
 import { sendError } from "../utils/sendError.js";
 
 export function validateId(req, res, next) {
-  const rawid = req.params.id
-  const id = Number(rawid)
+  // console.log("validateId: id:", req.params.id, "typeof:", typeof req.params.id)
+
+  const rawId = req.params.id
+  const numId = Number(rawId)
 
   // not an integer
-  if (!Number.isInteger(id) || isNaN(id)) {
+  if (!Number.isInteger(numId)) {
     return next(
-      sendError(400, `"id" must be an integer`, "INVALID_ID", { value: rawId })
+      sendError(400, `'id' must be an integer`, "INVALID_ID", { value: rawId })
     )
   }
 
   // no negative or zero ids
-  if (id <= 0) {
+  if (numId <= 0) {
     return next(
-      sendError(400, `"id" must be greater than 0`, "INVALID_ID", { value: id })
+      sendError(400, `"id" must be greater than 0`, "INVALID_ID", { value: numId })
     )
   }
 
@@ -24,9 +26,9 @@ export function validateId(req, res, next) {
 }
 
 export function validateMovieBody(req, res, next) {
-  const { id, imdb_id, title, year } = req.body
+  // console.log("id:", id, "typeof:", typeof id)
 
-  console.log("id:", id, "typeof:", typeof id)
+  const { id, imdb_id, title, year } = req.body
 
   const missing = []
   if (id === undefined) missing.push("id)")
@@ -49,7 +51,7 @@ export function validateMovieBody(req, res, next) {
     return next(
       sendError(
         422,
-        `"id" must be a number`,
+        `'id' must be a number`,
         "INVALID_TYPE",
         { field: "id", value: id }
       )

@@ -23,6 +23,9 @@ router.get("/", (req, res, next) => {
 router.get("/:id", validateId, (req, res, next) => {
   try {
     console.log("GET /find-movie/id")
+
+    console.log("id:", req.params, "typeof:", typeof req.params)
+
     const id = Number(req.params.id)
     const movie = data.find((entry) => entry.id === id)
 
