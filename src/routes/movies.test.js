@@ -18,32 +18,32 @@ describe("GET /movies", () => {
     expect(res.status).toBe(200)
     expect(res.body).toEqual(movies)
   })
-  // it("returns an array of movie objects with the right shape", async () => {
-  //   const res = await request(router).get("/")
+  it("returns an array of movie objects with the right shape", async () => {
+    const res = await request(router).get("/")
 
-  //   expect(res.status).toBe(200)
-  //   expect(Array.isArray(res.body)).toBe(true)
-  //   expect(res.body.length).toBe(movies.length)
+    expect(res.status).toBe(200)
+    expect(Array.isArray(res.body)).toBe(true)
+    expect(res.body.length).toBe(movies.length)
 
-  //   res.body.forEach((movie) => {
-  //     expect(movie).toMatchObject({
-  //       id: expect.any(Number),
-  //       imdb_id: expect.any(String),
-  //       title: expect.any(String),
-  //       year: expect.any(Number),
-  //     })
-  //   })
-  // })
-  // it("includes Monkey Man in the list", async () => {
-  //   const res = await request(router).get("/")
+    res.body.forEach((movie) => {
+      expect(movie).toMatchObject({
+        id: expect.any(Number),
+        imdb_id: expect.any(String),
+        title: expect.any(String),
+        year: expect.any(Number),
+      })
+    })
+  })
+  it("includes Monkey Man in the list", async () => {
+    const res = await request(router).get("/")
 
-  //   expect(res.status).toBe(200)
+    expect(res.status).toBe(200)
 
-  //   expect(res.body).toContainEqual(
-  //     expect.objectContaining({
-  //       title: "Monkey Man",
-  //       imdb_id: "tt9214772",
-  //     })
-  //   )
-  // })
+    expect(res.body).toContainEqual(
+      expect.objectContaining({
+        title: "Monkey Man",
+        imdb_id: "tt9214772",
+      })
+    )
+  })
 })
