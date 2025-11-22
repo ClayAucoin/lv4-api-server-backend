@@ -14,18 +14,24 @@ router.use(moviesRouter)
 describe("GET /movies", () => {
   it("returns the movies from data.js", async () => {
     const res = await request(router).get("/")
+    const { ok, data } = res.body
 
     expect(res.status).toBe(200)
-    expect(res.body).toEqual(movies)
+    expect(ok).toBe(true)
+    expect(Array.isArray(data)).toBe(true)
+    expect(data).toEqual(movies)
   })
+
   it("returns an array of movie objects with the right shape", async () => {
     const res = await request(router).get("/")
+    const { ok, data } = res.body
 
     expect(res.status).toBe(200)
-    expect(Array.isArray(res.body)).toBe(true)
-    expect(res.body.length).toBe(movies.length)
+    expect(ok).toBe(true)
+    expect(Array.isArray(data)).toBe(true)
+    expect(data.length).toBe(movies.length)
 
-    res.body.forEach((movie) => {
+    data.forEach((movie) => {
       expect(movie).toMatchObject({
         id: expect.any(Number),
         imdb_id: expect.any(String),
@@ -34,12 +40,14 @@ describe("GET /movies", () => {
       })
     })
   })
+
   it("includes Monkey Man in the list", async () => {
     const res = await request(router).get("/")
+    const { ok, data } = res.body
 
     expect(res.status).toBe(200)
-
-    expect(res.body).toContainEqual(
+    expect(ok).toBe(true)
+    expect(data).toContainEqual(
       expect.objectContaining({
         title: "Monkey Man",
         imdb_id: "tt9214772",
