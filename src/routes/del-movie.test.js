@@ -5,13 +5,10 @@ import request from "supertest"
 import express from "express"
 
 import app from "../app.js"
-import delMovieRouter from "./del-movie.js"
 import { deleteMovieById } from "./del-movie.js"
+import { sendError } from "../utils/sendError.js"
 import data from "../data.js"
 
-const router = express()
-router.use(express.json())
-router.use("/", delMovieRouter)
 
 const originalMovies = JSON.parse(JSON.stringify(data))
 
@@ -21,8 +18,8 @@ beforeEach(() => {
 })
 
 describe("GET /del-movie", () => {
-  it("returns movies and does not delete anything", async () => {
-    const res = await request(router).get("/")
+  it("returns route not found and does not delete anything", async () => {
+    const res = await request(app).get("/del-movie/")
 
     expect(res.status).toBe(200)
     expect(res.body.ok).toBe(true)
@@ -31,9 +28,20 @@ describe("GET /del-movie", () => {
   })
 })
 
+describe("DELETE /del-movie/", () => {
+
+  it("has no id", async () => {
+    const res = await request(app).delete("/del-movie/")
+    const err = sendError(400, "'id' parameter is required", "MISSING_ID")
+    expect(err.status).toEqual(400)
+  })
+
+
+})
+
 describe("DELETE /del-movie/:id", () => {
   it("deletes a movie successfully", async () => {
-    const res = await request(router).delete(`/8`)
+    const res = await request(app).delete("/del-movie/8")
 
     expect(res.status).toBe(200)
     expect(res.body.ok).toBe(true)
@@ -45,7 +53,7 @@ describe("DELETE /del-movie/:id", () => {
   })
 
   it("returns 404 when movie does not exist", async () => {
-    const res = await request(app).delete("/9999")
+    const res = await request(app).delete("/del-movie/9999")
 
     expect(res.status).toBe(404)
     expect(res.body.ok).toBe(false)
@@ -53,3 +61,7 @@ describe("DELETE /del-movie/:id", () => {
   })
 })
 
+it("returns null if -1", () => {
+  const err = deleteMovieById(-1)
+  expect(err).toBeNull
+})

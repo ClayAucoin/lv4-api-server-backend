@@ -9,7 +9,21 @@ const router = express()
 router.use(express.json())
 router.use(addMovieRouter)
 
+describe("GET /add-movie", () => {
+
+  it("returns movies and does not add anything", async () => {
+    const res = await request(router).get("/")
+
+    expect(res.status).toBe(200)
+    expect(res.body.ok).toBe(true)
+    expect(res.body.message).toBe("Nothing added")
+  })
+
+})
+
+
 describe("Server Routes", () => {
+
   it("add new movie", async () => {
     const res = await request(router)
       .post("/")
@@ -23,7 +37,6 @@ describe("Server Routes", () => {
         "poster": "https://image.tmdb.org/t/p/original/z53D72EAOxGRqdr7KXXWp9dJiDe.jpg",
         "genres": ["Action", "Adventure", "Thriller"]
       })
-
 
     const { ok, data } = res.body
 
@@ -40,6 +53,7 @@ describe("Server Routes", () => {
       "genres": ["Action", "Adventure", "Thriller"]
     })
     expect(data.id).toBeDefined()
-  });
+  })
+
 })
 

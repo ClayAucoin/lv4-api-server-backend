@@ -2,7 +2,7 @@
 
 import express from "express"
 import data from "../data.js"
-import { validateId, validateMovieBody } from "../middleware/validators.js"
+import { validateMovieBody } from "../middleware/validators.js"
 import { sendError } from "../utils/sendError.js";
 
 const router = express.Router()

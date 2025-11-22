@@ -26,7 +26,7 @@ export function validateMovieBody(req, res, next) {
   const { id, imdb_id, title, year } = req.body
 
   const missing = []
-  if (id === undefined) missing.push("id)")
+  if (id === undefined) missing.push("id")
   if (!title) missing.push("title")
   if (!year) missing.push("year")
 

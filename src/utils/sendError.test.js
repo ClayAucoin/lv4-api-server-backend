@@ -1,12 +1,10 @@
 // src/utils/sendError.test.js
 
-import { describe, it, expect, beforeEach } from "vitest"
-import request from "supertest"
-import express from "express"
-
+import { describe, it, expect } from "vitest"
 import { sendError } from "./sendError.js"
 
 describe("send error", () => {
+
   it("adds details when provided", () => {
     const err = sendError(400, "Bad input", "INVALID", { field: "year", value: 1816 })
     expect(err.details).toEqual({ field: "year", value: 1816 })
@@ -36,4 +34,5 @@ describe("send error", () => {
     const err = sendError(400, "Bad input", "INVALID")
     expect(err.details).toBeNull
   })
+
 })

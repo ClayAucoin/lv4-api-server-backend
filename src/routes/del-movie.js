@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
 
 router.delete("/", (req, res, next) => {
   try {
-    console.log("GET /del-movie")
+    console.log("DELTE /del-movie")
     return next(sendError(400, "'id' parameter is required", 'MISSING_ID'))
   } catch (err) {
     next(sendError(500, "Failed to read data", "READ_ERROR"))

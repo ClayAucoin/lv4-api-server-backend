@@ -31,15 +31,7 @@ app.use("/find-movie", findMovieRouter)
 app.use("/add-movie", addMovieRouter)
 app.use("/del-movie", delMovieRouter)
 
-// routes error 404
-app.use((req, res, next) => {
-  next(sendError(404, "Route not found", "NOT_FOUND"))
-})
-
-// global error handling
-app.use((err, req, res, next) => {
-  // console.error("error stack:", err.stack)
-
+export function globalErrorHandler(err, req, res, next) {
   const status = err.status || 500
   const code = err.code || "INTERNAL_ERROR"
   const message = err.message || "Server error"
@@ -58,6 +50,16 @@ app.use((err, req, res, next) => {
   }
 
   res.status(status).json(payload)
-})
+}
+
+export function error404(req, res, next) {
+  next(sendError(404, "Route not found", "NOT_FOUND"))
+}
+
+// routes error 404
+app.use(error404)
+
+// global error handling
+app.use(globalErrorHandler)
 
 export default app
