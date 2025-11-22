@@ -14,6 +14,7 @@ router.get("/", (req, res, next) => {
     console.log("GET /add-movie")
     res.status(200).json({
       ok: true,
+      message: "Nothing added",
       data: data
     })
   } catch (err) {
