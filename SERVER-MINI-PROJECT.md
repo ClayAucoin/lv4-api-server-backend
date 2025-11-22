@@ -34,78 +34,96 @@ Build a RESTful Express API that implements core CRUD operations using in-memory
 
 Your Express API must include:
 
-- [ ] 1.  **Core CRUD Operations**
+1.  **Core CRUD Operations**
 
-  - Routes
-    - [x] `/movies/`
-      - [x] `GET /movies/` - Return all items (status 200 - OK)
-    - [x] `/find-movie/`
-      - [x] `GET /find-movies/` - Return all items (status 200 - OK)
-      - [x] `GET /find-movie/:id` - Retrieve a specific item (status 200 - OK)
-      - [ ] `GET /find-movie/:id` - Movie not found (status 200 - OK)
-    - [ ] `/add-movie/`
-      - [ ] `GET /add-movie/:id` - Retrieve a specific item (status 200 - OK)
-      - [ ] `POST /add-movie/` - Create a new item (status 201 - CREATED)
-      - [ ] `POST /add-movie/` - Bad JSON (status 422 - UNPROCESSABLE_ENTITY)
-    - [ ] `/del-movie/`
-      - [ ] `GET /del-movie/` - Retrieve a specific item (status 200 - OK)
-      - [ ] `GET /del-movie/:id` - Retrieve a specific item (status 200 - OK)
-      - [ ] `DELETE /del-movie/:id` - Remove a specific item (status 200 - OK)
+    - Routes
+      - [x] `/`
+        - [x] `GET /` - Return 'Express Runnning' (status 200 - OK)
+      - [x] `/movies/`
+        - [x] `GET /movies/` - Return all items (status 200 - OK)
+      - [x] `/find-movie/`
+        - [x] `GET /find-movies/` - Return all items (status 200 - OK)
+        - [x] `GET /find-movie/:id` - Retrieve a specific item (status 200 - OK)
+        - [x] `GET /find-movie/:id` - Movie not found (status 404 - NOT_FOUND)
+      - [x] `/add-movie/`
+        - [x] `GET /add-movie/` - No body, returns all items (status 200 - Nothing Added)
+        - [x] `POST /add-movie/` - Create a new item (status 201 - CREATED)
+        - [x] `POST /add-movie/` - Bad JSON (status 422 - UNPROCESSABLE_ENTITY)
+      - [x] `/del-movie/`
+        - [x] `GET /del-movie/` - No ID, returns 'Nothing deleted' (status 200 - OK)
+        - [x] `GET /del-movie/8` - Returns 'Route not found' (status 404 - NOT_FOUND)
+        - [x] `DELETE /del-movie/:id` - Delete a specific item (status 200 - OK)
+        - [x] `DELETE /del-movie/99` - Returns 'Route not found' (status 404 - NOT_FOUND)
+        - [x] `DELETE /del-movie/abc` - Returns 'id must be an integer' (status 400 - Iresponses for all endpoints
+      - [x] _Note: Replace "items" with your chosen resource name (e.g., `/cats`, `/baseball-cards`, `/videos`)_
             <br />
-    - [ ] Proper JSON responses for all endpoints
-    - [x] _Note: Replace "items" with your chosen resource name (e.g., `/cats`, `/baseball-cards`, `/videos`)_
-          <br />
 
-- [ ] 2. **Utils**
+2.  **Utils**
 
-  - [ ] **Data Validation**
+    - **Data Validation**
 
-    - [ ] Return `422 (UNPROCESSABLE_ENTITY)` with input error: `{ "error": "message" }`
-      - [ ] Missing `id`
-      - [ ] Missing `title`
-      - [ ] Missing `year`
-      - [ ] Not number `id`
-      - [ ] Not number `year`
-      - [ ] Below 1900 `year`
-    - [ ] Return `400` with JSON error body for invalid input
-    - [ ] Consistent error response format across all endpoints
-          <br />
+      - [ ] Return `422 (UNPROCESSABLE_ENTITY)` with input error: `{ ok, error: { status, "message", "code" }}`
+      - [x] validateId
+        - [x] `id` not integer - 400 (INVALID_ID)
+        - [x] `id` must be greater than zero - 400 (INVALID_ID)
+      - [x] validateMovieBody
+        - [x] Missing `req.body` - 400 (MISSING_BODY)
+        - [x] `id` === undefined - 422 (VALIDATION_ERROR)
+        - [x] Missing `title` - 422 (VALIDATION_ERROR)
+        - [x] Missing `year` - 422 (VALIDATION_ERROR)
+        - [x] Not number `id` - 422 (INVALID_TYPE)
+        - [x] Not number `year` - 422 (INVALID_TYPE)
+        - [x] Below 1900 `year` - 422 (INVALID_VALUE)
+      - [x] Return `400` with JSON error body for invalid input
+      - [ ] Consistent error response format across all endpoints
+            <br />
 
-  - [ ] **Error Handling**
+- **Error Handling**
 
-    - [ ] Return `404 (NOT_FOUND)` with JSON error body when item not found: `{ "error": "message" }`
-    - [ ] Return `400 (BAD_REQUEST)` with JSON error body for invalid input
-    - [ ] Consistent error response format across all endpoints
-          <br />
-
-- [ ] 3. **Data Management**
-
-  - [ ] Use in-memory array to store items
-  - [ ] Generate unique IDs for each item (use `crypto.randomUUID()`)
-  - [ ] Seed initial data with at least 2-3 sample items
+  - Error format:
+    ```json
+    {
+      ok: false,
+      error: {
+        status,
+        message,
+        code
+      }
+    }
+    ```
+  - [ ] Return `404 (NOT_FOUND)` with JSON error body when item not found: `{ "error": "message" }`
+  - [ ] Return `400 (BAD_REQUEST)` with JSON error body for invalid input
+  - [ ] Consistent error response format across all endpoints
         <br />
 
-- [ ] 4.  **Code Organization**
+3. **Data Management**
 
-  - [ ] Export Express app for testing
-  - [ ] Clean, readable code structure
-  - [ ] Meaningful variable and function names
-  - [ ] Comments explaining key sections
-        <br />
+   - [ ] Use in-memory array to store items
+   - [ ] Generate unique IDs for each item (use `crypto.randomUUID()`)
+   - [ ] Seed initial data with at least 2-3 sample items
+         <br />
 
-- [ ] 5. **Testing (Optional but Recommended)**
+4. **Code Organization**
 
-  - [ ] Set up Vitest with Supertest
-  - [ ] Write at least 3 test cases covering happy paths and error cases
-  - [ ] Run tests with `npm run test`
-        <br />
+   - [ ] Export Express app for testing
+   - [ ] Clean, readable code structure
+   - [ ] Meaningful variable and function names
+   - [ ] Comments explaining key sections
+         <br />
 
-- [ ] 6. **Documentation**
+5. **Testing (Optional but Recommended)**
 
-  - [ ] README.md with setup instructions
-  - [ ] Description of endpoints and their behaviors
-  - [ ] Example requests/responses
-  - [ ] List of technologies used
+   - [ ] Set up Vitest with Supertest
+   - [ ] Write at least 3 test cases covering happy paths and error cases
+   - [ ] Run tests with `npm run test`
+         <br />
+
+6. **Documentation**
+
+   - [ ] README.md with setup instructions
+   - [ ] Description of endpoints and their behaviors
+   - [ ] Example requests/responses
+   - [ ] List of technologies used
 
 ---
 
@@ -252,3 +270,5 @@ Your Express API must include:
 ---
 
 _This mini-project consolidates concepts from Week 1 server lessons and prepares you for database integration in future weeks._
+NVALID_ID) - [x] `DELETE /del-movie/` - Returns 'Rid parameter is required' (status 400 - MISSING_ID)
+<br /> - [ ] Proper JSON

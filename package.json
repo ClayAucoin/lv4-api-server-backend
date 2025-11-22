@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest",
+    "test:coverage": "vitest run --coverage",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js"
   },
@@ -18,7 +19,7 @@
     "express": "^5.1.0"
   },
   "devDependencies": {
-    "@vitest/coverage-v8": "^4.0.12",
+    "@vitest/coverage-v8": "^4.0.13",
     "nodemon": "^3.1.11",
     "supertest": "^7.1.4",
     "vitest": "^4.0.12"

@@ -6,6 +6,7 @@ import express from "express"
 
 import app from "../app.js"
 import delMovieRouter from "./del-movie.js"
+import { deleteMovieById } from "./del-movie.js"
 import data from "../data.js"
 
 const router = express()
@@ -52,23 +53,3 @@ describe("DELETE /del-movie/:id", () => {
   })
 })
 
-describe("GET /del-movie/:id", () => {
-  it("deletes a movie using GET delete route", async () => {
-    const res = await request(router).get(`/8`)
-
-    expect(res.status).toBe(200)
-    expect(res.body.ok).toBe(true)
-    expect(res.body.data.id).toBe(8)
-
-    const find = data.find((m) => m.id === 8)
-    expect(find).toBeUndefined()
-  })
-
-  it("returns 404 when deleting nonexistent movie with GET", async () => {
-    const res = await request(app).get("/9999")
-
-    expect(res.status).toBe(404)
-    expect(res.body.ok).toBe(false)
-    expect(res.body.error.code).toBe("NOT_FOUND")
-  })
-})
