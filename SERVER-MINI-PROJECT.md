@@ -128,10 +128,10 @@ Your Express API must include:
 
 6. **Documentation**
 
-   - [ ] README.md with setup instructions
-   - [ ] Description of endpoints and their behaviors
-   - [ ] Example requests/responses
-   - [ ] List of technologies used
+   - [x] README.md with setup instructions
+     - [x] Description of endpoints and their behaviors
+     - [x] Example requests/responses
+     - [x] List of technologies used
 
 ---
 
@@ -139,27 +139,29 @@ Your Express API must include:
 
 - [ ] 1.  **Submit:** GitHub repository URL containing:
 
-  - [ ] All source code organized in proper structure
-  - [ ] Express app with CRUD routes
-  - [ ] `package.json` with dependencies
-  - [ ] `README.md` with:
-    - [ ] Project description
-    - [ ] Setup instructions (`npm install`, `npm run dev`)
-    - [ ] API endpoint documentation
-    - [ ] Example requests using Postman or cURL
-    - [ ] Testing instructions (if tests included)
+  - https://github.com/ClayAucoin/lv4-api-server-backend
+
+  - [x] All source code organized in proper structure
+  - [x] Express app with CRUD routes
+  - [x] `package.json` with dependencies
+  - [x] `README.md` with:
+    - [x] Project description
+    - [x] Setup instructions (`npm install`, `npm run dev`)
+    - [x] API endpoint documentation
+    - [x] Example requests using Postman or cURL
+    - [x] Testing instructions (if tests included)
   - [ ] Clear Git commit history (commit after each milestone)
 
 <br />
 
 - [ ] 2. **Before submitting, verify:**
   - [ ] App runs with `npm run dev` without errors
-  - [ ] All required CRUD operations implemented
-  - [ ] Status codes are appropriate (200, 201, 400, 404)
-  - [ ] Error responses use consistent JSON format
-  - [ ] README is complete with all sections
+  - [x] All required CRUD operations implemented
+  - [x] Status codes are appropriate (200, 201, 400, 404)
+  - [x] Error responses use consistent JSON format
+  - [x] README is complete with all sections
   - [ ] Code is clean and commented
-  - [ ] Tests pass (if included)
+  - [x] Tests pass (if included)
 
 ---
 

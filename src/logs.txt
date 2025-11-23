@@ -614,3 +614,13 @@
 2025-11-22T21:57:51.450Z GET /this-route-does-not-exist 404 3ms
 2025-11-22T21:59:17.813Z GET /this-route-does-not-exist 404 3ms
 2025-11-22T21:59:42.924Z GET /this-route-does-not-exist 404 2ms
+2025-11-23T15:21:02.859Z GET /find-movie/ 200 3ms
+2025-11-23T15:21:02.859Z GET /del-movie/ 200 3ms
+2025-11-23T15:21:02.861Z GET /this-route-does-not-exist 404 3ms
+2025-11-23T15:21:02.864Z GET /find-movie/ 200 0ms
+2025-11-23T15:21:02.865Z DELETE /del-movie/ 400 1ms
+2025-11-23T15:21:02.868Z GET /find-movie/ 200 0ms
+2025-11-23T15:21:02.868Z DELETE /del-movie/8 200 0ms
+2025-11-23T15:21:02.871Z DELETE /del-movie/9999 404 0ms
+2025-11-23T15:21:02.871Z GET /find-movie/16 200 0ms
+2025-11-23T15:21:02.875Z GET /find-movie/99999 404 1ms
