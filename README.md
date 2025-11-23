@@ -59,6 +59,7 @@ This backend is a Node.js and Express application built to manage a simple in-me
 ## Project Structure
 
 ```http
+.
 └── src/
     ├── app.js
     ├── config.js
