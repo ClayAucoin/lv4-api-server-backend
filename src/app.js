@@ -8,6 +8,7 @@ import rootRouter from "./routes/root.js"
 import moviesRouter from "./routes/movies.js"
 import findMovieRouter from "./routes/find-movie.js"
 import addMovieRouter from "./routes/add-movie.js"
+import delMovieRouter from "./routes/del-movie.js"
 
 const app = express();
 // const port = 3000;
@@ -21,6 +22,7 @@ app.use("/", rootRouter)
 app.use("/movies", moviesRouter)
 app.use("/find-movie", findMovieRouter)
 app.use("/add-movie", addMovieRouter)
+app.use("/del-movie", delMovieRouter)
 
 
 export function globalErrorHandler(err, req, res, next) {
