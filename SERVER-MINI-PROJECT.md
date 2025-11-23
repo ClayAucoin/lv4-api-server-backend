@@ -61,6 +61,15 @@ Your Express API must include:
 2.  **Utils**
 
     - **Data Validation**
+    - Response format:
+
+      ```json
+      {
+        status,
+        message,
+        code
+      }
+      ```
 
       - [ ] Return `422 (UNPROCESSABLE_ENTITY)` with input error: `{ ok, error: { status, "message", "code" }}`
       - [x] validateId
@@ -75,11 +84,10 @@ Your Express API must include:
         - [x] Not number `year` - 422 (INVALID_TYPE)
         - [x] Below 1900 `year` - 422 (INVALID_VALUE)
       - [x] Return `400` with JSON error body for invalid input
-      - [ ] Consistent error response format across all endpoints
+      - [x] Consistent validation response format across all endpoints
             <br />
 
 - **Error Handling**
-
   - Error format:
     ```json
     {
@@ -91,32 +99,32 @@ Your Express API must include:
       }
     }
     ```
-  - [ ] Return `404 (NOT_FOUND)` with JSON error body when item not found: `{ "error": "message" }`
-  - [ ] Return `400 (BAD_REQUEST)` with JSON error body for invalid input
-  - [ ] Consistent error response format across all endpoints
+  - [x] Return `404 (NOT_FOUND)` with JSON error body when item not found
+  - [x] Return `400 (BAD_REQUEST)` with JSON error body for invalid input
+  - [x] Consistent error response format across all endpoints
         <br />
 
 3. **Data Management**
 
-   - [ ] Use in-memory array to store items
+   - [x] Use in-memory array to store items
    - [ ] Generate unique IDs for each item (use `crypto.randomUUID()`)
-   - [ ] Seed initial data with at least 2-3 sample items
+   - [x] Seed initial data with at least 2-3 sample items
          <br />
 
 4. **Code Organization**
 
-   - [ ] Export Express app for testing
-   - [ ] Clean, readable code structure
-   - [ ] Meaningful variable and function names
-   - [ ] Comments explaining key sections
+   - [x] Export Express app for testing
+   - [x] Clean, readable code structure
+   - [x] Meaningful variable and function names
+   - [x] Comments explaining key sections
          <br />
 
 5. **Testing (Optional but Recommended)**
 
-   - [ ] Set up Vitest with Supertest
-   - [ ] Write at least 3 test cases covering happy paths and error cases
-   - [ ] Run tests with `npm run test`
-         <br />
+   - [x] Set up Vitest with Supertest
+   - [x] Write at least 3 test cases covering happy paths and error cases
+   - Run tests with `npm run test`
+     <br />
 
 6. **Documentation**
 
