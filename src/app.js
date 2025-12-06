@@ -6,7 +6,7 @@ import cors from "cors"
 import { sendError } from "./utils/sendError.js"
 
 // middleware
-import fileLogger from "./middleware/fileLogger.js"
+// import fileLogger from "./middleware/fileLogger.js"
 import colorLogger from "./middleware/colorLogger.js"
 
 // import routes
@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 
 // middleware: use log files
-app.use(fileLogger)
+// app.use(fileLogger)
 app.use(colorLogger)
 
 // use routes
